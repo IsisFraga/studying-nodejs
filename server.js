@@ -22,8 +22,9 @@ server.get('/videos', () => {
   const videos = database.list()
   return videos
 })
-server.put('/videos/:id', () => {
-  const videoId = request.params.videoId
+
+server.put('/videos/:id', (request, reply) => {
+  const videoId = request.params.id
   const { title, description, duration } = request.body
 
   database.update(videoId, {
@@ -34,8 +35,11 @@ server.put('/videos/:id', () => {
   return reply.status(204).send() // 204 significa uma resposta que teve sucesso mas não tem conteúdo (retornando resposta vazia)
 })
 
-server.delete('/videos/:id', () => {
-  return 'Hello Node.JS'
+server.delete('/videos/:id', (request, reply) => {
+  const videoId = request.params.id
+  database.delete(videoId)
+
+  return reply.status(204).send()
 })
 
 server.listen({
