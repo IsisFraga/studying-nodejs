@@ -3,8 +3,9 @@ import { randomUUID } from "crypto"
 export class DatabaseMemory {
   #videos = new Map()
 
-  list() {
-    return Array.from(this.#videos.entries()).map((videoArray) => { //converte uma estrutura de dados que não é um array para um array -- entries retorna um array com vários arrays dentro onde cada um dos arrays representa um vídeo onde a primeira chave representa o UUID e a segunda é o restante das infos 
+  list(search) {
+    return Array.from(this.#videos.entries())
+      .map((videoArray) => { //converte uma estrutura de dados que não é um array para um array -- entries retorna um array com vários arrays dentro onde cada um dos arrays representa um vídeo onde a primeira chave representa o UUID e a segunda é o restante das infos 
       const id = videoArray[0]
       const data = videoArray[1]
 
@@ -12,7 +13,13 @@ export class DatabaseMemory {
         id,
         ...data
       }
-    }) 
+    })
+      .filter(video => {
+        if (search) {
+          return video.title.includes(search)
+        }
+        return true
+      })
   }
 
   create(video) {
