@@ -1,4 +1,4 @@
-POST http://localhost:3333/videos
+POST https://studying-nodejs.onrender.com/videos
 Content-Type: application/json
 
 {
@@ -9,18 +9,18 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3333/videos
+GET https://studying-nodejs.onrender.com/videos
 
 ###
 
-PUT http://localhost:3333/videos/2ce493a8-2dc7-49ba-801e-8129e092f90d
+PUT https://studying-nodejs.onrender.com/videos/5e0d1551-4963-48a4-a674-2da6c00377da
 Content-Type: application/json
 
 {
-  "title": "Video 02",
+  "title": "Video aeeee",
   "description": "Este é o primeiro vídeo",
   "duration": 180
 }
 ###
 
-DELETE http://localhost:3333/videos/2ce493a8-2dc7-49ba-801e-8129e092f90d
+DELETE https://studying-nodejs.onrender.com/videos/5e0d1551-4963-48a4-a674-2da6c00377da
